@@ -16,7 +16,26 @@ class OthersController < ApplicationController
     end
 
     def show
-        @tweet = Tweet.find(params[:id])
+        @other = Other.find(params[:id])
+    end
+
+    def edit
+        @other = Other.find(params[:id])
+    end
+
+    def update
+        other = Other.find(params[:id])
+        if other.update(other_params)
+          redirect_to :action => "show", :id => other.id
+        else
+          redirect_to :action => "new"
+        end
+    end
+
+    def destroy
+        other = Other.find(params[:id])
+        other.destroy
+        redirect_to action: :index
     end
     
     private
