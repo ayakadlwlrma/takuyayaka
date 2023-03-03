@@ -13,4 +13,13 @@ class PointsController < ApplicationController
         end
     end
 
+    def index
+        @points = Point.all
+    end
+
+    private
+    def point_params
+        params.require(:point).permit(:song, :point, :image)
+    end
+
 end

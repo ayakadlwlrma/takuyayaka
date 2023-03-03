@@ -1,0 +1,11 @@
+<div class="tweets-container">
+    <% @points.each do |t| %>
+        <div class="tweet">
+            <%= t.song %>
+            <%= t.point %>
+            <%= t.image %>
+        </div>
+    <% end %>
+</div>
+
+<%= link_to "新規投稿へ", new_point_path %>
