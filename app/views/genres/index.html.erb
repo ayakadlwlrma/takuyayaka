@@ -6,6 +6,7 @@
         </div>
         <%= link_to "詳細へ", genre_path(t.id) %>
         <%= link_to "編集する", edit_genre_path(t.id) %>
+        <%= button_to "削除する", genre_path(t.id), method: :delete %> 
     <% end %>
 </div>
 

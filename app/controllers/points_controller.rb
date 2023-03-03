@@ -34,9 +34,15 @@ class PointsController < ApplicationController
         end
     end
 
+    def destroy
+        point= Point.find(params[:id])
+        point.destroy
+        redirect_to action: :index
+    end
+
     private
     def point_params
         params.require(:point).permit(:song, :point, :image)
     end
-
+    
 end
