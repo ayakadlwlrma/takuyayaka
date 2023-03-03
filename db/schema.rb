@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2023_03_03_021716) do
 
   create_table "genres", force: :cascade do |t|
@@ -27,6 +28,28 @@ ActiveRecord::Schema.define(version: 2023_03_03_021716) do
     t.string "movie"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+=======
+ActiveRecord::Schema.define(version: 2023_03_03_020534) do
+
+  create_table "points", force: :cascade do |t|
+    t.string "song"
+    t.float "point"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+>>>>>>> ded5aae215f989884dfbcd2b7784172b649758ae
   end
 
 end
