@@ -20,6 +20,25 @@ class GenresController < ApplicationController
         @genre = Genre.find(params[:id])
     end
 
+    def edit
+        @genre = Genre.find(params[:id])
+    end
+
+    def update
+        genre = Genre.find(params[:id])
+        if genre.update(genre_params)
+            redirect_to :action => "show", :id => genre.id
+        else
+            redirect_to :action => "new"
+        end
+    end
+
+    def destroy
+        genre = Genre.find(params[:id])
+        genre.destroy
+        redirect_to action: :index
+    end
+
     private
     def genre_params
         params.require(:genre).permit(:song, :singer)

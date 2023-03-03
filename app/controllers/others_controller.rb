@@ -9,9 +9,9 @@ class OthersController < ApplicationController
     def create
         other = Other.new(other_params)
         if othre.save!
-          redirect_to :action => "index"
+            redirect_to :action => "index"
         else
-          redirect_to :action => "new"
+            redirect_to :action => "new"
         end
     end
 
