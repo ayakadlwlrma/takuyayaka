@@ -11,10 +11,9 @@
 
     <div class="field">
         <%= f.label :写真 %>
-        <%= f.text_field :image, :size => 140 %>
+        <%= f.file_field :image, :size => 140 %>
     </div>
 
     <%= f.submit "submit" %>
 <% end %>
 
-<%= link_to "Tweet一覧に戻る", points_path %>

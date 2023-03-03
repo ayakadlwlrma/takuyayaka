@@ -12,4 +12,5 @@ class PointsController < ApplicationController
             redirect_to :action => "new"
         end
     end
+
 end
