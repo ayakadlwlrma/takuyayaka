@@ -4,5 +4,5 @@
   <p><%= @other.body %></p>
   <p><%= @other.created_at %></p>
 </div>
-
+<%= link_to "編集する", edit_other_path(@other.id) %>
 <%= link_to "Tweet一覧に戻る", others_path %>
