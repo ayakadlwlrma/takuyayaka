@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   resources :points
   resources :statics
+  resources :genres
+
 end
