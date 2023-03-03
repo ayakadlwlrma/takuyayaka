@@ -1,1 +1,10 @@
-aaa
+<div class="tweets-container">
+    <% @genres.each do |t| %>
+        <div class="tweet">
+            <%= t.song %>
+            <%= t.singer %>
+        </div>
+    <% end %>
+</div>
+
+<%= link_to "新規投稿へ", new_genre_path %>
