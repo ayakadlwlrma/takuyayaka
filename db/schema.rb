@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2023_03_03_060937) do
+=======
 ActiveRecord::Schema.define(version: 2023_03_03_060626) do
+>>>>>>> d36f560b96d0ef409016920e9b410fbc2f122687
 
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -20,11 +24,19 @@ ActiveRecord::Schema.define(version: 2023_03_03_060626) do
   end
 
   create_table "likes", force: :cascade do |t|
+<<<<<<< HEAD
+    t.integer "point_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["point_id"], name: "index_likes_on_point_id"
+=======
     t.integer "genre_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genre_id"], name: "index_likes_on_genre_id"
+>>>>>>> d36f560b96d0ef409016920e9b410fbc2f122687
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -58,6 +70,10 @@ ActiveRecord::Schema.define(version: 2023_03_03_060626) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
+  add_foreign_key "likes", "points"
+=======
   add_foreign_key "likes", "genres"
+>>>>>>> d36f560b96d0ef409016920e9b410fbc2f122687
   add_foreign_key "likes", "users"
 end
