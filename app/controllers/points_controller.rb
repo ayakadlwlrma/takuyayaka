@@ -21,6 +21,19 @@ class PointsController < ApplicationController
         @point = Point.find(params[:id])
     end
 
+    def edit
+        @point = Point.find(params[:id])
+    end
+
+    def update
+        point = Point.find(params[:id])
+        if point.update(point_params)
+            redirect_to :action => "show", :id => point.id
+        else
+            redirect_to :action => "new"
+        end
+    end
+
     private
     def point_params
         params.require(:point).permit(:song, :point, :image)

@@ -2,7 +2,7 @@
     <p><%= @point.song %></p>
     <p><%= @point.point %></p>
     <p><%= @point.image %></p>
-
 </div>
 
 <%= link_to "一覧に戻る", points_path %>
+<%= link_to "編集する", edit_point_path(@point.id) %>
