@@ -8,6 +8,4 @@ Rails.application.routes.draw do
   resources :genres
   resources :points
   resources :statics
-  resources :genres
-
 end
