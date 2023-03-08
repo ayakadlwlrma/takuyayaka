@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
         has_many :likes, dependent: :destroy
         has_many :liked_genres, through: :likes, source: :genre
+
         def already_liked?(genre)
           self.likes.exists?(genre_id: genre.id)
         end
@@ -18,7 +19,7 @@ class User < ApplicationRecord
 
         has_many :loves, dependent: :destroy
         has_many :loved_points, through: :loves, source: :point
-        def already_liked?(point)
-          self.likes.exists?(point_id: point.id)
+        def already_loved?(point)
+          self.loves.exists?(point_id: point.id)
         end
 end
