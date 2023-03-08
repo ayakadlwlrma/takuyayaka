@@ -25,5 +25,7 @@
         <%= button_to "削除する", point_path(t.id), method: :delete %> 
     <% end %>
 </div>
-
+<% if user_signed_in? %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+<% end %>
 <%= link_to "新規投稿へ", new_point_path %>

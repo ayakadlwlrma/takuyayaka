@@ -1,0 +1,41 @@
+<h1>users#show</h1>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<h2>ユーザーの投稿一覧</h2>
+<% @user.points.each do |t| %>
+  <%= t.user.name %>
+  <%= t.song %>
+  <%= t.point %>
+  <%= t.image %>
+<% end %>
+
+<% @user.genres.each do |t| %>
+    <%= t.user.name %>
+    <%= t.song %>
+    <%= t.singer %>
+<% end %>
+
+<% @user.others.each do |t| %>
+    <%= t.user.name %>
+    <%= t.song %>
+    <%= t.singer %>
+    <%= t.text %>
+    <%= t.voice %>
+    <%= t.movie %>
+<% end %>
+
+<!-- 以下はいいね機能を実装している場合-->
+<h2>ユーザーがいいねした投稿一覧</h2>
+<% @user.liked_tweets.each do |t| %>
+  <%= t.user.name %>
+  <%= t.body %>
+<% end %>
+<!-- ここまで-->
+
+<%= link_to "Tweet一覧に戻る", tweets_path %>
