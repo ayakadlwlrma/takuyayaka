@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_08_081506) do
+ActiveRecord::Schema.define(version: 2023_03_08_044244) do
 
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2023_03_08_081506) do
     t.string "movie"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "points", force: :cascade do |t|
