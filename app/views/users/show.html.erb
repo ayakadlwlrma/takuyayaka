@@ -3,6 +3,7 @@
 <p>メールアドレス : <%= @user.email %></p>
 <p>プロフィール : <%= @user.profile %></p>
 <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+<%= render "relationships/follow_button", user: @user %>
 
 <% if current_user.id == @user.id %>
   <%= link_to "編集する", edit_user_registration_path %>
@@ -38,7 +39,20 @@
   <%= t.singer %>
 <% end %>
 
-<%= render 'follow_form' %>
-<%= render 'stats' %>
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.followings.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>
 
 <%= link_to "Tweet一覧に戻る", genres_path %>
