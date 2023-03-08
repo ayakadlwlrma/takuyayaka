@@ -1,5 +1,5 @@
 class LovesController < ApplicationController
-    def create
+      def create
         love = current_user.loves.create(point_id: params[:point_id]) #user_idとtweet_idの二つを代入
         redirect_back(fallback_location: root_path)
       end

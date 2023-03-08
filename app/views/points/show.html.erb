@@ -2,8 +2,9 @@
     <p><%= @point.song %></p>
     <p><%= @point.point %></p>
     <p><%= @point.image %></p>
+
     <% if user_signed_in? %>
-    <% if current_user.already_liked?(@point) %>
+    <% if current_user.already_loveed?(@point) %>
       <%= link_to point_love_path(@point), method: :delete do %>
         <p>いいねを取り消す</p><%= @point.loves.count %>
       <% end %>
