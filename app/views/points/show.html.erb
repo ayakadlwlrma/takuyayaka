@@ -2,24 +2,25 @@
     <p><%= @point.song %></p>
     <p><%= @point.point %></p>
     <p><%= @point.image %></p>
-</div>
-<% if user_signed_in? %>
-<% if current_user.already_liked?(@point) %>
-  <%= link_to point_love_path(@point), method: :delete do %>
-    <p>いいねを取り消す</p><%= @point.loves.count %>
+    <% if user_signed_in? %>
+    <% if current_user.already_liked?(@point) %>
+      <%= link_to point_love_path(@point), method: :delete do %>
+        <p>いいねを取り消す</p><%= @point.loves.count %>
+      <% end %>
+    <% else %>
+      <%= link_to point_loves_path(@point), method: :post do %>
+        <p>いいね</p><%= @point.loves.count %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>いいねの数 = </p><%= @point.loves.count %>
   <% end %>
-<% else %>
-  <%= link_to point_loves_path(@point), method: :post do %>
-    <p>いいね</p><%= @point.loves.count %>
-  <% end %>
-<% end %>
-<% else %>
-<p>いいねの数 = </p><%= @point.loves.count %>
-<% end %>
 <%= link_to "編集する", edit_point_path(@point.id) %>
+</div>
 
 <h2>いいねしたユーザー</h2>
 <% @point.loved_users.each do |user| %>
-  <li><%= user.email %></li>
+<li><%= user.email %></li>
 <% end %>
+
 <%= link_to "一覧に戻る", points_path %>
