@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   resources :posts
   devise_for :users
   resources :users, only: [:show] 
+  resources :users do
+    member do
+     get :following, :followers
+    end
+  end
+  resources :relationships,       only: [:create, :destroy]
+  
   resources :genres do
     resources :likes, only: [:create, :destroy]
   end

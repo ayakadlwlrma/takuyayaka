@@ -32,10 +32,13 @@
 <% end %>
 
 <h2>ユーザーがいいねした投稿一覧</h2>
-<% @user.liked_tweets.each do |t| %>
+<% @user.liked_genres.each do |t| %>
   <%= t.user.name %>
-  <%= t.body %>
+  <%= t.song %>
+  <%= t.singer %>
 <% end %>
-<!-- ここまで-->
 
-<%= link_to "Tweet一覧に戻る", tweets_path %>
+<%= render 'follow_form' %>
+<%= render 'stats' %>
+
+<%= link_to "Tweet一覧に戻る", genres_path %>
