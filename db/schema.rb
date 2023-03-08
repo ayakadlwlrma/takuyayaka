@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2023_03_08_163140) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+ 
+
   create_table "others", force: :cascade do |t|
     t.string "song"
     t.string "singer"
@@ -77,4 +79,6 @@ ActiveRecord::Schema.define(version: 2023_03_08_163140) do
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "genres"
   add_foreign_key "likes", "users"
+  add_foreign_key "loves", "points"
+  add_foreign_key "loves", "users"
 end
