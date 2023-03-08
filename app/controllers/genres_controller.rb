@@ -1,19 +1,19 @@
 class GenresController < ApplicationController
+    def index
+        @genres = Genre.all
+    end
+    
     def new
         @genre = Genre.new
     end
 
     def create
         genre = Genre.new(genre_params)
-        if genre.save
+        if genre.save!
             redirect_to :action => "index"
         else
             redirect_to :action => "new"
         end
-    end
-
-    def index
-        @genres = Genre.all
     end
 
     def show
@@ -27,7 +27,7 @@ class GenresController < ApplicationController
     def update
         genre = Genre.find(params[:id])
         if genre.update(genre_params)
-            redirect_to :action => "show", :id => genre.id
+            redirect_to :action => "index", :id => genre.id
         else
             redirect_to :action => "new"
         end

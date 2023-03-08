@@ -2,13 +2,14 @@ class OthersController < ApplicationController
     def index
         @others = Other.all
     end
+    
     def new
         @other = Other.new
     end
     
     def create
         other = Other.new(other_params)
-        if othre.save!
+        if other.save!
             redirect_to :action => "index"
         else
             redirect_to :action => "new"
