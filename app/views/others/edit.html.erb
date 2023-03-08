@@ -1,0 +1,30 @@
+<%= form_for @other do |f| %>
+  <div class="field">
+      <%= f.label :曲 %>
+      <%= f.text_field :song, :size => 140 %>
+  </div>
+
+  <div class="field">
+      <%= f.label :歌手 %>
+      <%= f.text_field :singer, :size => 140 %>
+  </div>
+
+  <div class="field">
+      <%= f.label :内容 %>
+      <%= f.file_field :text, :size => 140 %>
+  </div>
+
+  <div class="field">
+      <%= f.label :音声 %>
+      <%= f.file_field :voice, :size => 140 %>
+  </div>
+
+  <div class="field">
+      <%= f.label :動画 %>
+      <%= f.file_field :movie, :size => 140 %>
+  </div>
+
+  <%= f.submit "submit" %>
+<% end %>
+
+<%= link_to "一覧へ", others_path %>

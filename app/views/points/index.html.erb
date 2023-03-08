@@ -1,0 +1,29 @@
+<div class="tweets-container">
+    <% @points.each do |t| %>
+        <div class="tweet">
+            <%= t.song %>
+            <%= t.point %>
+            <%= t.image %>
+        </div>
+
+        <% if user_signed_in? %>
+        <% if current_user.already_loved?(t) %>
+            <%= link_to point_love_path(id: t.id, point_id: t.id), method: :delete do %>
+                <p>いいねを取り消す</p><%= t.loves.count %>
+            <% end %>
+        <% else %>
+            <%= link_to point_loves_path(id: t.id, point_id: t.id), method: :post do %>
+                <p>いいね</p><%= t.loves.count %>
+            <% end %>
+        <% end %>
+    <% else %>
+        <p>いいねの数 = </p><%= t.loves.count %>
+    <% end %>
+
+        <%= link_to "詳細へ", point_path(t.id) %>
+        <%= link_to "編集する", edit_point_path(t.id) %>
+        <%= button_to "削除する", point_path(t.id), method: :delete %> 
+    <% end %>
+</div>
+
+<%= link_to "新規投稿へ", new_point_path %>

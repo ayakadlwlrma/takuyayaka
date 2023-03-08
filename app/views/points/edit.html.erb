@@ -1,0 +1,20 @@
+<%= form_for @point do |f| %>
+    <div class="field">
+        <%= f.label :曲 %>
+        <%= f.text_field :song, :size => 140 %>
+    </div>
+
+    <div class="field">
+        <%= f.label :点数 %>
+        <%= f.text_field :point, :size => 140 %>
+    </div>
+
+    <div class="field">
+        <%= f.label :写真 %>
+        <%= f.file_field :image, :size => 140 %>
+    </div>
+
+    <%= f.submit "submit" %>
+<% end %>
+
+<%= link_to "一覧へ", points_path %>
