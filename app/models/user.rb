@@ -22,4 +22,7 @@ class User < ApplicationRecord
         def already_loved?(point)
           self.loves.exists?(point_id: point.id)
         end
+        validates :name, presence: true 
+        validates :profile, length: { maximum: 200 } 
+      
 end
