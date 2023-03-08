@@ -45,5 +45,7 @@ class User < ApplicationRecord
           self.followings.include?(other_user)
         end
 
+        mount_uploader :image, ImageUploader
+
         
 end
