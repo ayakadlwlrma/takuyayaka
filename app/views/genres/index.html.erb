@@ -3,6 +3,7 @@
         <div class="tweet">
             <%= t.song %>
             <%= t.singer %>
+            <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
         </div>
 
         <% if user_signed_in? %>
