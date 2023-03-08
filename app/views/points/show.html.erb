@@ -4,23 +4,23 @@
     <p><%= @point.image %></p>
 
     <% if user_signed_in? %>
-    <% if current_user.already_loveed?(@point) %>
-      <%= link_to point_love_path(@point), method: :delete do %>
-        <p>いいねを取り消す</p><%= @point.loves.count %>
+      <% if current_user.already_favorited?(@point) %>
+        <%= button_to point_favorite_path(@point), method: :delete do %>
+          <p>いいねを取り消す</p><%= @point.favorites.count %>
+        <% end %>
+      <% else %>
+        <%= button_to point_favorites_path(@point), method: :post do %>
+          <p>いいね</p><%= @point.favorites.count %>
+        <% end %>
       <% end %>
     <% else %>
-      <%= link_to point_loves_path(@point), method: :post do %>
-        <p>いいね</p><%= @point.loves.count %>
-      <% end %>
+      <p>いいねの数 = </p><%= @point.favorites.count %>
     <% end %>
-  <% else %>
-    <p>いいねの数 = </p><%= @point.loves.count %>
-  <% end %>
 <%= link_to "編集する", edit_point_path(@point.id) %>
 </div>
 
 <h2>いいねしたユーザー</h2>
-<% @point.loved_users.each do |user| %>
+<% @point.favorited_users.each do |user| %>
 <li><%= user.email %></li>
 <% end %>
 

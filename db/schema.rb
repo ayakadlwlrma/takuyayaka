@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_08_085118) do
+ActiveRecord::Schema.define(version: 2023_03_08_163140) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "point_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["point_id"], name: "index_favorites_on_point_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -27,15 +36,6 @@ ActiveRecord::Schema.define(version: 2023_03_08_085118) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genre_id"], name: "index_likes_on_genre_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "loves", force: :cascade do |t|
-    t.integer "point_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["point_id"], name: "index_loves_on_point_id"
-    t.index ["user_id"], name: "index_loves_on_user_id"
   end
 
   create_table "others", force: :cascade do |t|
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 2023_03_08_085118) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "points"
+  add_foreign_key "favorites", "users"
   add_foreign_key "likes", "genres"
   add_foreign_key "likes", "users"
-  add_foreign_key "loves", "points"
-  add_foreign_key "loves", "users"
 end

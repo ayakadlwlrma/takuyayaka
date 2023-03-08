@@ -16,12 +16,12 @@ class User < ApplicationRecord
         has_many :others, dependent: :destroy
 
         has_many :points, dependent: :destroy
-
-        has_many :loves, dependent: :destroy
-        has_many :loved_points, through: :loves, source: :point
-        def already_loved?(point)
-          self.loves.exists?(point_id: point.id)
+        has_many :favorites, dependent: :destroy
+        has_many :favorited_points, through: :favorites, source: :point
+        def already_favorited?(point)
+          self.favorites.exists?(point_id: point.id)
         end
+
         validates :name, presence: true 
         validates :profile, length: { maximum: 200 } 
 
