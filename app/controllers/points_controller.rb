@@ -6,7 +6,7 @@ class PointsController < ApplicationController
 
     def create
         point = Point.new(point_params)
-        point.user_id = current_user.id  #追記
+        ppoint.user_id = current_user.id 
 
         if point.save
             redirect_to :action => "index"
@@ -16,7 +16,13 @@ class PointsController < ApplicationController
     end
 
     def index
-        @points = Point.all
+        if params[:search] != nil && params[:search] != ''
+            #部分検索かつ複数検索
+            search = params[:search]
+            @points = Point.where("song LIKE ? OR point LIKE ?", "%#{search}%", "%#{search}%")
+        else
+            @points = Point.all
+        end
     end
 
     def show
