@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2023_03_08_215229) do
+=======
+ActiveRecord::Schema.define(version: 2023_03_11_122311) do
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+>>>>>>> 08b950a2e295d97b3c367ad7cb1f674f1aa89133
 
   create_table "favorites", force: :cascade do |t|
     t.integer "point_id", null: false
@@ -39,6 +52,28 @@ ActiveRecord::Schema.define(version: 2023_03_08_215229) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "loves", force: :cascade do |t|
+    t.integer "point_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["point_id"], name: "index_loves_on_point_id"
+    t.index ["user_id"], name: "index_loves_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+>>>>>>> 08b950a2e295d97b3c367ad7cb1f674f1aa89133
   create_table "others", force: :cascade do |t|
     t.string "song"
     t.string "singer"
@@ -60,6 +95,7 @@ ActiveRecord::Schema.define(version: 2023_03_08_215229) do
     t.integer "user_id"
   end
 
+<<<<<<< HEAD
   create_table "tag_maps", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.integer "tag_id", null: false
@@ -71,6 +107,25 @@ ActiveRecord::Schema.define(version: 2023_03_08_215229) do
 
   create_table "tags", force: :cascade do |t|
     t.string "tag_name"
+=======
+  create_table "posts", force: :cascade do |t|
+    t.string "video"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+>>>>>>> 08b950a2e295d97b3c367ad7cb1f674f1aa89133
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -90,10 +145,21 @@ ActiveRecord::Schema.define(version: 2023_03_08_215229) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "entries", "users"
   add_foreign_key "favorites", "points"
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "genres"
   add_foreign_key "likes", "users"
+<<<<<<< HEAD
   add_foreign_key "tag_maps", "genres"
   add_foreign_key "tag_maps", "tags"
+=======
+  add_foreign_key "loves", "points"
+  add_foreign_key "loves", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "relationships", "users", column: "follow_id"
+>>>>>>> 08b950a2e295d97b3c367ad7cb1f674f1aa89133
 end

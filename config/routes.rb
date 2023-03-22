@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
+  resources :posts
   devise_for :users
-  resources :users, only: [:show] 
+  resources :users, :only => [:index, :show]
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show]
+  resources :users do
+    member do
+     get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+
   resources :genres do
     resources :likes, only: [:create, :destroy]
   end
