@@ -13,8 +13,8 @@
   <%= t.user.name %>
   <%= t.song %>
   <%= t.point %>
-  <%= t.image %>
-<% end %>
+  <%= image_tag t.image_url, size: "250x200" if t.image? %>        
+  <% end %>
 
 <% @user.genres.each do |t| %>
     <%= t.user.name %>
@@ -32,10 +32,10 @@
 <% end %>
 
 <h2>ユーザーがいいねした投稿一覧</h2>
-<% @user.liked_tweets.each do |t| %>
+<% @user.favorited_points.each do |t| %>
   <%= t.user.name %>
-  <%= t.body %>
+  <%= t.song %>
 <% end %>
 <!-- ここまで-->
 
-<%= link_to "Tweet一覧に戻る", tweets_path %>
+<%= link_to "Tweet一覧に戻る", points_path %>

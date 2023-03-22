@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
+  resources :tags do
+    get 'genres', to: 'genres#search'
+  end
+
   resources :statics
   resources :others
 

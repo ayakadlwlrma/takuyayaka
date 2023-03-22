@@ -9,6 +9,11 @@
         <%= f.text_field :singer, :size => 140 %>
     </div>
 
+    <div class="field">
+        <%= f.label"タグ (スペースで区切ると複数タグ登録できます)" %>
+        <%= f.text_field :tag_name, value: @tag_list,class:"form-control"%>
+    </div>
+    
     <%= f.submit "submit" %>
 <% end %>
 

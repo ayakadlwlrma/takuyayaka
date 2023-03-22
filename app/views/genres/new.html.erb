@@ -9,6 +9,9 @@
         <%= f.text_field :singer, :size => 140 %>
     </div>
 
+    <p>スペースを入力することで複数のタグを付けることができます。</p>
+    <%= f.text_field :tag_maps, placeholder: "Ruby Python Java" %>
+
     <%= f.submit "submit" %>
 <% end %>
 

@@ -1,7 +1,7 @@
 <div class="tweet">
     <p><%= @point.song %></p>
     <p><%= @point.point %></p>
-    <p><%= @point.image %></p>
+    <p><%= image_tag @point.image_url, size: "250x200" if @point.image? %></p>
 
     <% if user_signed_in? %>
       <% if current_user.already_favorited?(@point) %>

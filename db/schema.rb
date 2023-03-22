@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_08_163140) do
+ActiveRecord::Schema.define(version: 2023_03_08_215229) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "point_id", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2023_03_08_163140) do
     t.string "song"
     t.string "singer"
     t.integer "user_id"
+    t.integer "genre_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -37,8 +38,6 @@ ActiveRecord::Schema.define(version: 2023_03_08_163140) do
     t.index ["genre_id"], name: "index_likes_on_genre_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
-
- 
 
   create_table "others", force: :cascade do |t|
     t.string "song"
@@ -55,9 +54,25 @@ ActiveRecord::Schema.define(version: 2023_03_08_163140) do
     t.string "song"
     t.float "point"
     t.string "image"
+    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_tag_maps_on_genre_id"
+    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,6 +94,6 @@ ActiveRecord::Schema.define(version: 2023_03_08_163140) do
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "genres"
   add_foreign_key "likes", "users"
-  add_foreign_key "loves", "points"
-  add_foreign_key "loves", "users"
+  add_foreign_key "tag_maps", "genres"
+  add_foreign_key "tag_maps", "tags"
 end

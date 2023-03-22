@@ -1,9 +1,15 @@
+<h3>タグリスト</h3>
+<% @tag_list.each do |list| %>
+    #<%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
+    <%= "(#{list.genres.count})" %>
+<% end %>
+
+
 <div class="tweets-container">
     <% @genres.each do |t| %>
         <div class="tweet">
             <%= t.song %>
             <%= t.singer %>
-            <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
         </div>
 
         <% if user_signed_in? %>
@@ -18,6 +24,10 @@
             <% end %>
         <% else %>
             <p>いいねの数 = </p><%= t.likes.count %>
+        <% end %>
+
+        <% @genres.each do |genre| %> 
+            #<%= link_to tag.tag_name, tag_genres_path(tag_id: tag.id) %>
         <% end %>
 
         <%= link_to "詳細へ", genre_path(t.id) %>

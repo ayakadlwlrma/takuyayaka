@@ -60,3 +60,5 @@ gem 'cloudinary'
 gem 'dotenv-rails'
 
 gem 'mini_magick'
+
+gem 'simple_calendar', '~> 2.0'
