@@ -6,7 +6,7 @@ class PointsController < ApplicationController
 
     def create
         point = Point.new(point_params)
-        ppoint.user_id = current_user.id 
+        point.user_id = current_user.id 
 
         if point.save
             redirect_to :action => "index"

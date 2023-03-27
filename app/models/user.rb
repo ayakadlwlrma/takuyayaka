@@ -26,9 +26,6 @@ class User < ApplicationRecord
         validates :name, presence: true 
         validates :profile, length: { maximum: 200 } 
 
-<<<<<<< HEAD
-        mount_uploader :image, ImageUploader
-=======
         has_many :relationships
         has_many :followings, through: :relationships, source: :follow
         has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
@@ -52,5 +49,4 @@ class User < ApplicationRecord
         mount_uploader :image, ImageUploader
 
         
->>>>>>> 08b950a2e295d97b3c367ad7cb1f674f1aa89133
 end
