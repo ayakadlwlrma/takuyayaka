@@ -5,17 +5,16 @@ class GenresController < ApplicationController
     end
     
     def new
-        @genre = Genre.new
-        @genre = current_user.genres.new 
+        genre = Genre.new
     end
 
     def create
-        @genre = current_user.genres.new(genre_params)
-        @genre.user_id = current_user.id
+        genre = Genre.new(genre_params)
+        genre.user_id = current_user.id
         tag_list = params[:genre][:tag_name].nil&.split(",")
 
-        if @genre.save!
-            @genre.save_tag(tag_list) 
+        if genre.save!
+            genre.save_tag(tag_list) 
             redirect_to :action => "index"
         else
             redirect_to :action => "new"
