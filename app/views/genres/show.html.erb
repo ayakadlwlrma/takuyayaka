@@ -1,9 +1,4 @@
-<% @pgenre_tags.each do |genre| %>
-    <% if tag.genres.count > 0 %>
-        #<%= link_to tag.tag_name, tag_genres_path(tag_id: tag.id) %>
-        <%= "(#{tag.genres.count})" %>
-    <% end %>
-<% end %>
+
 
 <div class="tweet">
     <p><%= @genre.song %></p>

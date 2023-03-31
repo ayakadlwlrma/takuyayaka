@@ -33,54 +33,9 @@
 <% end %>
 
 <h2>ユーザーがいいねした投稿一覧</h2>
-<<<<<<< HEAD
 <% @user.favorited_points.each do |t| %>
   <%= t.user.name %>
   <%= t.song %>
-=======
-<% @user.liked_genres.each do |t| %>
-  <%= t.user.name %>
-  <%= t.song %>
-  <%= t.singer %>
->>>>>>> 08b950a2e295d97b3c367ad7cb1f674f1aa89133
 <% end %>
 
-<<<<<<< HEAD
 <%= link_to "Tweet一覧に戻る", points_path %>
-=======
-<% @user ||= current_user %>
-<div class="stats">
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
-      <%= @user.followings.count %>
-    </strong>
-    following
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
-      <%= @user.followers.count %>
-    </strong>
-    followers
-  </a>
-</div>
-<div class="user-in">
-<h2><%= @user.email %></h2>
-
-<% if @user.id == current_user.id %>
-    <%= @msg %>
-<% else %>
-    <% if @isRoom == true %>
-        <p><%= link_to 'DMへ', room_path(@roomId) %></p>
-    <% else %>
-        <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e|%>
-                <% e.hidden_field :user_id, value: @user.id %>
-            <% end %>
-        <%= f.submit "DMを開始する"%>
-        <% end %>
-    <% end %>
-<% end %>
-</div>
-
-<%= link_to "Tweet一覧に戻る", genres_path %>
->>>>>>> 08b950a2e295d97b3c367ad7cb1f674f1aa89133

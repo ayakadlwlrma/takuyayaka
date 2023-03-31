@@ -5,16 +5,16 @@ class GenresController < ApplicationController
     end
     
     def new
-        genre = Genre.new
+        @genre = Genre.new
     end
 
     def create
-        genre = Genre.new(genre_params)
-        genre.user_id = current_user.id
-        tag_list = params[:genre][:tag_name].nil&.split(",")
+        @genre = Genre.new(genre_params)
+        @genre.user_id = current_user.id
+        tag_list = params[:genre][:tag_maps].split(",")
 
-        if genre.save!
-            genre.save_tag(tag_list) 
+        if @genre.save!
+            @genre.save_tag(tag_list) 
             redirect_to :action => "index"
         else
             redirect_to :action => "new"
@@ -42,19 +42,17 @@ class GenresController < ApplicationController
             end
 
             genre.save_tag(tag_list)
-            redirect_to _path(genre.id), notice:'投稿完了しました:)'
+            redirect_to genre_path(genre.id), notice:'投稿完了しました:)'
         else
             redirect_to :action => "edit"
         end
-        genre = Genre.find(params[:id])
-        genre.destroy
-        redirect_to action: :index
+        
     end
 
     def search
         @tag_list = Tag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
         @tag = Tag.find(params[:tag_id])  # クリックしたタグを取得
-        @renres = @tag.genres.all           # クリックしたタグに紐付けられた投稿を全て表示
+        @genres = @tag.genres.all           # クリックしたタグに紐付けられた投稿を全て表示
     end
 
     private
