@@ -7,7 +7,7 @@
       <%= t.song %>
       <%= t.singer %>
       <%= t.text %>
-      <%= t.voice %>
+      <%= audio_tag t.audio_url, :controls => true if t.audio? %>
       <%= t.movie %>
       
       <%= link_to "詳細へ", other_path(t.id) %> 
