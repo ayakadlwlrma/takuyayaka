@@ -27,9 +27,7 @@ Rails.application.routes.draw do
     get 'genres', to: 'genres#search'
   end
 
-  resources :statics
   resources :others
 
-  get 'statics/top' => 'statics#top'
-  root 'statics#top'
+  root 'points#index'
 end

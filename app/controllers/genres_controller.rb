@@ -6,12 +6,13 @@ class GenresController < ApplicationController
     
     def new
         @genre = Genre.new
+        @genre = current_user.genres.new
     end
 
     def create
         @genre = Genre.new(genre_params)
         @genre.user_id = current_user.id
-        tag_list = params[:genre][:tag_maps].split(",")
+        tag_list = params[:genre][:tag_maps].split(" ")
 
         if @genre.save!
             @genre.save_tag(tag_list) 
@@ -47,6 +48,12 @@ class GenresController < ApplicationController
             redirect_to :action => "edit"
         end
         
+    end
+
+    def destroy
+        genre = Genre.find(params[:id])
+        genre.destroy
+        redirect_to action: :index
     end
 
     def search

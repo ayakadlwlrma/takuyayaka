@@ -10,6 +10,25 @@
   </head>
 
   <body>
+    <header>
+      <h1>GeekTwitter</h1>
+      <div class="header-list">
+      <ul>
+        <li><%= link_to "点数", points_path %></li>
+        <li><%= link_to "ジャンル", genres_path %></li>
+        <li><%= link_to "その他", others_path %></li>
+        <li><%= link_to "DMへ", users_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン",  new_user_session_path %></li>
+            
+        <% end %>
+      </ul>
+     </div>
+    </header>
     <%= yield %>
   </body>
 </html>
