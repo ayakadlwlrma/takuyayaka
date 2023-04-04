@@ -49,6 +49,12 @@ class GenresController < ApplicationController
         
     end
 
+    def destroy
+        genre = Genre.find(params[:id])
+        genre.destroy
+        redirect_to action: :index
+    end
+
     def search
         @tag_list = Tag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
         @tag = Tag.find(params[:tag_id])  # クリックしたタグを取得

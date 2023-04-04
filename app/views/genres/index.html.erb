@@ -1,8 +1,11 @@
 <h3>タグリスト</h3>
 <% @tag_list.each do |list| %>
-    #<%= link_to list.tag_name, tag_genres_path(tag_id: list.id) %>
+    <%= link_to list.tag_name, tag_genres_path(tag_id: list.id) %>
     <%= "(#{list.genres.count})" %>
 <% end %>
+
+<br>
+<br>
 
 
 <div class="tweets-container">
@@ -10,10 +13,6 @@
         <div class="tweet">
             <%= t.song %>
             <%= t.singer %>
-<<<<<<< HEAD
-=======
-            <%= link_to t.user.name, user_path(t.user.id) %>
->>>>>>> 08b950a2e295d97b3c367ad7cb1f674f1aa89133
         </div>
 
         <% if user_signed_in? %>
@@ -31,14 +30,22 @@
         <% end %>
 
         <% @genres.each do |genre| %> 
-            #<%= link_to tag.tag_name, tag_genres_path(tag_id: tag.id) %>
+            <%= link_to tag.tag_name, tag_genres_path(tag_id: tag.id) %>
         <% end %>
 
         <%= link_to "詳細へ", genre_path(t.id) %>
         <%= link_to "編集する", edit_genre_path(t.id) %>
         <%= button_to "削除する", genre_path(t.id), method: :delete %> 
+
+        <br>
+        <br>
+
     <% end %>
+    
 </div>
+
+<br>
+
 <% if user_signed_in? %>
   <%= link_to "マイページへ", user_path(current_user.id) %>
 <% end %>
