@@ -16,6 +16,11 @@
         <%= f.datetime_select :start_time %>
     </div>
 
+    <div class="field">
+        <%= f.label :歌手 %>
+        <%= f.text_field :singer, :size => 140 %>
+    </div>
+
     <%= f.submit "submit" %>
 <% end %>
 

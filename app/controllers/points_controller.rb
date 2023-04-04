@@ -50,7 +50,7 @@ class PointsController < ApplicationController
 
     private
     def point_params
-        params.require(:point).permit(:song, :point, :image, :start_time)
+        params.require(:point).permit(:song, :point, :image, :start_time, :singer)
     end
     
 end
