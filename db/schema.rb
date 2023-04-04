@@ -48,15 +48,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "loves", force: :cascade do |t|
-    t.integer "point_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["point_id"], name: "index_loves_on_point_id"
-    t.index ["user_id"], name: "index_loves_on_user_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
@@ -82,6 +73,7 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.string "song"
     t.float "point"
     t.string "image"
+    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -149,8 +141,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "genres"
   add_foreign_key "likes", "users"
-  add_foreign_key "loves", "points"
-  add_foreign_key "loves", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "relationships", "users"

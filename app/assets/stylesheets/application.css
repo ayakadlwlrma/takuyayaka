@@ -14,3 +14,77 @@
  *= require_tree .
  *= require_self
  */
+* {
+    padding: 0;
+    margin: 0;
+}
+  
+header {
+    position: fixed;
+    top: 0; /* 固定する位置 */
+	left: 0; /* 固定する位置 */
+	right: 0;  /* 固定する位置 */
+    height: 10%;
+    width: 100%;
+    background: linear-gradient( 
+		
+		15deg,
+    #ccccff,
+    #ddccff,
+    #eeccff,
+    #ffccff,
+	#ffccee,
+    #ffccdd);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    z-index: 990; 
+}
+
+header a {
+    font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+    color: #333; 
+    text-decoration: none; 
+    position: relative;
+    display: inline-block;
+    transition: .3s;
+}
+
+ header a::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #31aae2;
+  transition: .3s;
+  transform: translateX(-50%);
+}
+
+ header a:hover::after{
+  width: 100%;
+ }
+  header h1 {
+    font-size: 35px;
+    font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+    font-weight: bold;
+    color: #333;
+    margin-left: 50px;
+ }
+.header-list {
+    display: flex;
+    align-items: center;
+}
+header ul {
+    display: flex;
+}
+  header li {
+    list-style: none;
+    margin-right: 55px;
+ }
+main{
+    margin-top:80px;
+    
+  }
