@@ -23,14 +23,6 @@
     <%= t.singer %>
 <% end %>
 
-<% @user.others.each do |t| %>
-    <%= t.user.name %>
-    <%= t.song %>
-    <%= t.singer %>
-    <%= t.text %>
-    <%= t.voice %>
-    <%= t.movie %>
-<% end %>
 
 <h2>ユーザーがいいねした投稿一覧</h2>
 <% @user.favorited_points.each do |t| %>

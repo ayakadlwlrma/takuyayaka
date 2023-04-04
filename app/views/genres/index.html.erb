@@ -4,52 +4,5 @@
     <%= "(#{list.genres.count})" %>
 <% end %>
 
-<br>
-<br>
-
-
-<div class="tweets-container">
-    <% @genres.each do |t| %>
-        <div class="tweet">
-            <%= t.song %>
-            <%= t.singer %>
-            <%= link_to t.user.name, user_path(t.user.id) %>
-
-        </div>
-
-        <% if user_signed_in? %>
-            <% if current_user.already_liked?(t) %>
-                <%= button_to genre_like_path(id: t.id, genre_id: t.id), method: :delete do %>
-                    <p>いいねを取り消す</p><%= t.likes.count %>
-                <% end %>
-            <% else %>
-                <%= button_to genre_likes_path(id: t.id, genre_id: t.id), method: :post do %>
-                    <p>いいね</p><%= t.likes.count %>
-                <% end %>
-            <% end %>
-        <% else %>
-            <p>いいねの数 = </p><%= t.likes.count %>
-        <% end %>
-
-        <% @genres.each do |genre| %> 
-            <%= link_to tag.tag_name, tag_genres_path(tag_id: tag.id) %>
-        <% end %>
-
-        <%= link_to "詳細へ", genre_path(t.id) %>
-        <%= link_to "編集する", edit_genre_path(t.id) %>
-        <%= button_to "削除する", genre_path(t.id), method: :delete %> 
-
-        <br>
-        <br>
-
-    <% end %>
-    
-</div>
-
-<br>
-
-<% if user_signed_in? %>
-  <%= link_to "マイページへ", user_path(current_user.id) %>
-<% end %>
 
 <%= link_to "新規投稿へ", new_genre_path %>

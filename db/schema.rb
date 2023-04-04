@@ -58,17 +58,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "others", force: :cascade do |t|
-    t.string "song"
-    t.string "singer"
-    t.text "text"
-    t.string "voice"
-    t.string "movie"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-  end
-
   create_table "points", force: :cascade do |t|
     t.string "song"
     t.float "point"
@@ -77,12 +66,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string "video"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relationships", force: :cascade do |t|
