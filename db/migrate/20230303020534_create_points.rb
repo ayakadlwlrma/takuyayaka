@@ -4,7 +4,6 @@ class CreatePoints < ActiveRecord::Migration[6.1]
       t.string :song
       t.float :point
       t.string :image
-      t.datetime :start_time
       t.string :singer
       
       t.timestamps

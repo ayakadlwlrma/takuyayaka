@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :tags do
-    get 'genres', to: 'genres#search'
+    get 'points', to: 'points#search'
   end
 
   resources :others

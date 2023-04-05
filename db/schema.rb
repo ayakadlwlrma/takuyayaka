@@ -30,15 +30,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "song"
-    t.string "singer"
-    t.integer "user_id"
-    t.integer "genre_id"
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.integer "user_id", null: false
@@ -62,7 +53,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.string "song"
     t.float "point"
     t.string "image"
-    t.datetime "start_time"
     t.string "singer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -102,6 +92,7 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.datetime "start_time"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
