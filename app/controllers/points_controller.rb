@@ -2,7 +2,6 @@ class PointsController < ApplicationController
 
     def new
         @point = Point.new
-        @point = current_user.points.new
     end
 
     def create
@@ -71,7 +70,8 @@ class PointsController < ApplicationController
 
     private
     def point_params
-        params.require(:point).permit(:song, :point, :image, :start_time, :singer, )
+        params.require(:point).permit(:song, :point, :image, :start_time, :singer)
+
     end
     
 end
