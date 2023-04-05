@@ -30,15 +30,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["genre_id"], name: "index_likes_on_genre_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
@@ -58,16 +49,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["follow_id"], name: "index_relationships_on_follow_id"
-    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
-    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -115,12 +96,8 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
   add_foreign_key "entries", "users"
   add_foreign_key "favorites", "points"
   add_foreign_key "favorites", "users"
-  add_foreign_key "likes", "genres"
-  add_foreign_key "likes", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "relationships", "users"
-  add_foreign_key "relationships", "users", column: "follow_id"
   add_foreign_key "tag_maps", "genres"
   add_foreign_key "tag_maps", "tags"
 end

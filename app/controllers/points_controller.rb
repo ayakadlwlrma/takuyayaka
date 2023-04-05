@@ -2,7 +2,6 @@ class PointsController < ApplicationController
 
     def new
         @point = Point.new
-        @point = current_user.points.new
     end
 
     def create

@@ -15,7 +15,6 @@
       <div class="header-list">
       <ul>
         <li><%= link_to "点数", points_path %></li>
-        <li><%= link_to "ジャンル", genres_path %></li>
         <li><%= link_to "DMへ", users_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "マイページ", user_path(current_user.id) %></li>
