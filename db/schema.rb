@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
     t.float "point"
     t.string "image"
     t.string "singer"
+    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"

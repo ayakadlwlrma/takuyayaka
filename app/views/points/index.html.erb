@@ -7,14 +7,3 @@
 
 
 <%= link_to "新規投稿へ", new_point_path %>
-
-
-<%= month_calendar events: @points do |date, points| %>
-    <%= date.day %>
-  
-    <% points.each do |point| %>
-      <div>
-        <%= link_to point.song, point %>
-      </div>
-    <% end %>
-  <% end %>
