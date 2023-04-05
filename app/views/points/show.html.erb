@@ -2,12 +2,15 @@
   <div class="score">
     <p><%= @point.song %></p>
  </div>
-  <div class="point">
+ <div class="point">
+    <p><%= @point.singer %></p>
+</div>
+<div class="point">
     <p><%= @point.point %>点</p>
- </div>
-
- <p><%= @point.singer %></p>
- 
+</div>
+<div class="point">
+    <p><%= @point.user.name %></p>
+</div>
     <% if user_signed_in? %>
       <% if current_user.already_favorited?(@point) %>
         <%= button_to point_favorite_path(@point), method: :delete do %>

@@ -1,27 +1,31 @@
-<%= form_for @point do |f| %>
-    <div class="field">
-        <%= f.label :曲 %>
-        <%= f.text_field :song, :size => 140 %>
-    </div>
+<% if user_signed_in? %> 
+  <%= form_for @point do |f| %>
+        <div class="field">
+            <%= f.label :曲 %>
+            <%= f.text_field :song, :size => 140 %>
+        </div>
 
-    <div class="field">
-        <%= f.label :点数 %>
-        <%= f.text_field :point, :size => 140 %>
-    </div>
+        <div class="field">
+            <%= f.label :点数 %>
+            <%= f.text_field :point, :size => 140 %>
+        </div>
 
 
 
-    <div class="field">
-        <%= f.label :start_time %>
-        <%= f.datetime_select :start_time %>
-    </div>
+        <div class="field">
+            <%= f.label :start_time %>
+            <%= f.datetime_select :start_time %>
+        </div>
 
-    <div class="field">
-        <%= f.label :歌手 %>
-        <%= f.text_field :singer, :size => 140 %>
-    </div>
+        <div class="field">
+            <%= f.label :歌手 %>
+            <%= f.text_field :singer, :size => 140 %>
+        </div>
 
-    <%= f.submit "submit" %>
+        <%= f.submit "submit" %>
+    <% end %>
+<% else %>
+  <p>ログインしてね</p>
 <% end %>
 
 <%= link_to "一覧へ", points_path %>
