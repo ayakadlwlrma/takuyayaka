@@ -1,4 +1,4 @@
-<h1>users#show</h1>
+<h1>ユーザー詳細ページ</h1>
 <p>名前 : <%= @user.name %></p>
 <p>メールアドレス : <%= @user.email %></p>
 <p>プロフィール : <%= @user.profile %></p>
@@ -15,13 +15,8 @@
   <%= t.song %>
   <%= t.point %>
   <%= image_tag t.image_url, size: "250x200" if t.image? %>        
-  <% end %>
-
-<% @user.genres.each do |t| %>
-    <%= t.user.name %>
-    <%= t.song %>
-    <%= t.singer %>
 <% end %>
+
 
 
 <h2>ユーザーがいいねした投稿一覧</h2>
@@ -30,4 +25,24 @@
   <%= t.song %>
 <% end %>
 
-<%= link_to "Tweet一覧に戻る", points_path %>
+<div class="user-inn">
+
+<h2><%= @user.email %></h2>
+
+<% if @user.id == current_user.id %>
+    <%= @msg %>
+<% else %>
+    <% if @isRoom == true %>
+        <p><%= link_to 'DMへ', room_path(@roomId) %></p>
+    <% else %>
+        <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e|%>
+                <% e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+        <%= f.submit "DMを開始する"%>
+        <% end %>
+    <% end %>
+<% end %>
+</div>
+<%= link_to "ユーザー一覧に戻る", users_path %>
+<%= link_to "一覧に戻る", points_path %>
