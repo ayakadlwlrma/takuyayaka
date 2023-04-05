@@ -5,16 +5,6 @@ Rails.application.routes.draw do
   resources :users, :only => [:index, :show]
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show]
-  resources :users do
-    member do
-     get :following, :followers
-    end
-  end
-  resources :relationships, only: [:create, :destroy]
-
-  resources :genres do
-    resources :likes, only: [:create, :destroy]
-  end
 
  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -26,8 +16,6 @@ Rails.application.routes.draw do
   resources :tags do
     get 'points', to: 'points#search'
   end
-
-  resources :others
 
   root 'points#index'
 end
