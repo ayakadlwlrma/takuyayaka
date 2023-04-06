@@ -17,19 +17,6 @@
 <% end %>
 
 
-
-<%= month_calendar events: @points do |date, points| %>
-  <%= date.day %>
-
-  <% @user.points.each do |t| %>   
-      <%= link_to t.points.song, t %>
-    </div>
-  <% end %>
-<% end %>
-
-
-
-
 <h2>ユーザーがいいねした投稿一覧</h2>
 <% @user.favorited_points.each do |t| %>
   <%= t.user.name %>
