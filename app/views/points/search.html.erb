@@ -7,5 +7,8 @@
 <%= "#{@tag.tag_name}" %>
 <br>
 <% @points.each do |point| %>
-    <%= link_to point.content, point %>
+    <%= link_to point.singer, point %>
 <% end %>
+
+
+<p><%= link_to "一覧へ", points_path %></p>

@@ -1,5 +1,5 @@
 <% if user_signed_in? %> 
-  <%= form_for @point do |f| %>
+    <%= form_for @point do |f| %>
         <div class="field">
             <%= f.label :曲 %>
             <%= f.text_field :song, :size => 140 %>
@@ -29,7 +29,7 @@
         <%= f.submit "submit" %>
     <% end %>
 <% else %>
-  <p>ログインしてね</p>
+    <p>ログインしてね</p>
 <% end %>
 
 <%= link_to "一覧へ", points_path %>

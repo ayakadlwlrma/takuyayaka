@@ -6,4 +6,30 @@
 
 
 
+
+<%= month_calendar events: @points do |date, points| %>
+  <%= date.day %>
+
+  
+      <%= link_to @point.song, point %>
+  
+  
+<% end %>
+
+
+
+
+<h3>タグリスト</h3>
+<% @tag_list.each do |list| %>
+  #<%= link_to list.tag_name, tag_points_path(tag_id: list.id) %>
+  <%= "(#{list.points.count})" %>
+<% end %>
+
+<% @points.each do |point| %> 
+
+  <% @points.each do |point| %> 
+      <%= link_to tag.tag_name, tag_points_path(tag_id: tag.id) %>
+  <% end %>
+<% end %>
+
 <%= link_to "新規投稿へ", new_point_path %>

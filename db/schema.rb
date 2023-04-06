@@ -57,11 +57,11 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
   end
 
   create_table "tag_maps", force: :cascade do |t|
-    t.integer "genre_id", null: false
+    t.integer "point_id", null: false
     t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["genre_id"], name: "index_tag_maps_on_genre_id"
+    t.index ["point_id"], name: "index_tag_maps_on_point_id"
     t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
   end
 
@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.datetime "start_time"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -98,6 +97,6 @@ ActiveRecord::Schema.define(version: 2023_03_11_122311) do
   add_foreign_key "favorites", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "tag_maps", "genres"
+  add_foreign_key "tag_maps", "points"
   add_foreign_key "tag_maps", "tags"
 end

@@ -2,14 +2,14 @@ class PointsController < ApplicationController
 
     def new
         @point = Point.new
+        @point = current_user.points.new
     end
 
     def create
-        point = Point.new(point_params)
-        point.user_id = current_user.id 
-        tag_list = params[:point][:tag_maps].split(" ")
+        @point = current_user.points.new(point_params)           
+        tag_list = params[:point][:tag_maps].split(nil)
 
-        if point.save
+        if @point.save
             @point.save_tag(tag_list)
             redirect_to :action => "index"
         else
