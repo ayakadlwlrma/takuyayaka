@@ -1,17 +1,37 @@
 <h1>チャットルーム</h1>
 <div class="user-innn">
-<% @entries.each do |e| %>
-    <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h3>
-<% end %>
-<p>2人のDM❤️</p>
+    <h2>2人のDM❤️</h2>
+    <% @entries.each do |e| %>
+        <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%></a></strong></h3>
+    <% end %>
+   
 </div>
 
-<div class="dmMain">
+<div class="dm">
     <% @messages.each do |m| %>
-        <strong><%= m.body %></strong>
-        <small><%= m.user.name %>さん</small><hr>
+        <% if m.user_id == current_user.id %>
+            <!-- 自分のメッセージ -->
+            <% user = User.find(m.user_id) %>
+                <div class="balloon1">
+                    <%= m.body %>
+                    by<%= m.user.name %>
+                    <div class="icon"><br> <%= m.user.name %> </div>
+                </div><br>
+                
+            <br>
+      <% else %>
+            <!-- 相手のメッセージ -->
+            <% user = User.find_by(id: m.user_id) %>
+            <div class="balloon2">
+                <%= m.body %>
+                by<%= m.user.name %>
+                <div class="icon"><br><%= m.user.name %></div>
+            </div>
+            
+      <% end %>
     <% end %>
 
+    
     <%= form_for @message do |f| %>
     <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
     <%= f.hidden_field :room_id, :value => @room.id %>
