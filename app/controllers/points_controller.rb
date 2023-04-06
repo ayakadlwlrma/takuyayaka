@@ -2,7 +2,7 @@ class PointsController < ApplicationController
 
     def new
         @point = Point.new
-        @point = current_user.points.new
+
     end
 
     def create
@@ -65,6 +65,10 @@ class PointsController < ApplicationController
         @tag_list = Tag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
         @tag = Tag.find(params[:tag_id])  # クリックしたタグを取得
         @points = @tag.points.all           # クリックしたタグに紐付けられた投稿を全て表示
+    end
+
+    def calender
+        @points = Point.all
     end
 
 

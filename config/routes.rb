@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'rooms/show'
+  get 'points/calender' => 'points#calender'
+
   resources :posts
   devise_for :users
   resources :users, :only => [:index, :show]
