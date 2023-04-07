@@ -25,6 +25,7 @@
       <p>いいねの数 = </p><%= @point.favorites.count %>
     <% end %>
 <%= link_to "編集する", edit_point_path(@point.id) %>
+<%= button_to "削除する", point_path(@point.id), method: :delete %>
 </div>
 
 <h2>いいねしたユーザー</h2>
