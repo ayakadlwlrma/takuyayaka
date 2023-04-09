@@ -2,21 +2,37 @@
   <div class="kensaku2">
     <%= form_tag({controller:"points",action:"index"}, method: :get) do %>
       <%= text_field_tag :search %>
+      
       <%= submit_tag '検索する'  %>
+
     <% end %>
   </div>
 </div>
 
+<div class="points">
+  <% @points.each do |t| %>
+    <div class="tweet">
+      <%= t.song %>
+      <%= t.singer %>
+      <%= t.point %>
+    </div>
+  <% end %>
+</div>
+
 
 <div class="tag">
-  <h3>タグリスト</h3>
+  <h8>ジャンルごとに探す→</h8>
     <div class="tag-box">
       <% @tag_list.each do |list| %>
         <div class="tag-list">
-          #<%= link_to list.tag_name, tag_points_path(tag_id: list.id) %>
-          <%= "(#{list.points.count})" %>
+          <div class="hash">
+            #
+          </div>
+          <div class="name_tag">
+            <%= link_to list.tag_name, tag_points_path(tag_id: list.id) %>
+            <%= "(#{list.points.count})" %>
+          </div>
         </div>
       <% end %>
     </div>
 </div>
-

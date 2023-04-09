@@ -2,7 +2,6 @@ class PointsController < ApplicationController
 
     def new
         @point = Point.new
-
     end
 
     def create
@@ -18,14 +17,15 @@ class PointsController < ApplicationController
     end
 
     def index
-        
+        @tag_list = Tag.all 
+
         if params[:search] != nil && params[:search] != ''
             #部分検索かつ複数検索
             search = params[:search]
             @points = Point.where("song LIKE ? OR point LIKE ?", "%#{search}%", "%#{search}%")
         else
             @points = Point.all
-            @tag_list = Tag.all 
+
         end
     end
 
