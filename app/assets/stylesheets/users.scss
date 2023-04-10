@@ -224,12 +224,8 @@
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
 }
-.namae{
-  text-align: center;
-}
-.namae2{
-  text-align: center;
-}
+
+
 
 /* 吹き出し本体 */
 .balloon2{
@@ -266,17 +262,23 @@
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
 }
-.icons{
-background-color: #767676;
-width: 51px;
-height: 51px;
-margin-right: 10px;
+
+.icon{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
-.icons2{
-  background-color: #767676;
-  width: 51px;
-  height: 51px;
-  margin-right: 10px;
+.namae{
+  text-align: center;
+}
+
+.icon2{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.namae2{
+  text-align: center;
 }
 
 .aaaaa{

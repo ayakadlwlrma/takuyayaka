@@ -18,9 +18,8 @@
                     <%= m.body %>
                 </div>  
                 <div class="icons">
-                    <div class="icon">
-                        <%= image_tag m.user.image_url, size: "50x50" if m.user.image? %>
-                    </div>
+                <img src=<%= m.user.image %> class = "icon">
+
                     <div class="namae">
                         <%= m.user.name %>
                     </div>
@@ -34,9 +33,7 @@
             <div class="kakomu">
                 
                 <div class="icons2">
-                    <div class="icon2">
-                        <%= image_tag m.user.image_url, size: "50x50" if m.user.image? %>
-                    </div>
+                    <img src=<%= m.user.image %> class = "icon2">                 
                     <div class="namae2">
                         <%= m.user.name %>
                     </div>
