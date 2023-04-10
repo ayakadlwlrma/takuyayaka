@@ -176,11 +176,18 @@
   text-align:center;
   background-color:gainsboro;
 }
+
+
+
 .dm{
   margin-top: 50px;
   margin-left: 30%;
   margin-right: 30%;
 }
+.kakomu{
+  display: flex;
+}
+
 /* 吹き出し本体 */
 .balloon1{
   position: relative;
@@ -188,8 +195,10 @@
   border-radius: 10px;
   color: #ffffff;
   background-color: #23f02a;
-  margin-top: 10px;
+  margin-bottom: 20px;
   margin-left: 110px;          /* 左に余白を設ける */
+  width: 500px;
+
 }
 /* 画像 - 絶対配置で左上に配置 */
 .balloon1 .icon{
@@ -215,6 +224,12 @@
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
 }
+.namae{
+  text-align: center;
+}
+.namae2{
+  text-align: center;
+}
 
 /* 吹き出し本体 */
 .balloon2{
@@ -223,8 +238,9 @@
   border-radius: 10px;
   color: #ffffff;
   background-color: #0888ff;
-  margin-top: 10px;
+  margin-bottom: 20px;
   margin-right: 110px;          /* 右に余白を設ける */
+  width: 500px;
 }
 /* 画像 - 絶対配置で右上に配置 */
 .balloon2 .icon{
@@ -249,4 +265,24 @@
   border-left: 15px solid #0888ff;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
+}
+.icons{
+background-color: #767676;
+width: 51px;
+height: 51px;
+margin-right: 10px;
+}
+.icons2{
+  background-color: #767676;
+  width: 51px;
+  height: 51px;
+  margin-right: 10px;
+}
+
+.aaaaa{
+  margin-top: 100px;
+}
+.mese{
+  margin: 100px 5px;
+  width: 700px;
 }
