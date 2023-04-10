@@ -11,19 +11,23 @@
 <div class="point">
     <p><%= @point.user.name %></p>
 </div>
-    <% if user_signed_in? %>
-      <% if current_user.already_favorited?(@point) %>
-        <%= button_to point_favorite_path(@point), method: :delete do %>
-          <p>いいねを取り消す</p><%= @point.favorites.count %>
-        <% end %>
-      <% else %>
-        <%= button_to point_favorites_path(@point), method: :post do %>
-          <p>いいね</p><%= @point.favorites.count %>
-        <% end %>
-      <% end %>
-    <% else %>
-      <p>いいねの数 = </p><%= @point.favorites.count %>
+
+
+<% if user_signed_in? %>
+  <% if current_user.already_favorited?(@point) %>
+    <%= link_to point_favorite_path(@point), method: :delete do %>
+      <i class="fas fa-heart"></i><%= @point.favorites.count %> 
     <% end %>
+  <% else %>
+    <%= link_to point_favorites_path(id: @point.id, point_id: @point.id), method: :post do %>      
+      <i class="fas fa-heart"></i><%= @point.favorites.count %>
+    <% end %>
+  <% end %>
+<% else %>
+<i class="far fa-heart"></i><%= @point.favorites.count %>
+<% end %>
+
+
 <%= link_to "編集する", edit_point_path(@point.id) %>
 <%= button_to "削除する", point_path(@point.id), method: :delete %>
 </div>
